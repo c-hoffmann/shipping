@@ -812,13 +812,18 @@ a:hover {
 
 /* Firma-Badge */
 .company-badge {
-    display: inline-block;
-    padding: var(--space-xs) var(--space-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 30px;
     border-radius: var(--radius-sm);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    text-align: center;
+    padding: 0;
 }
 
 .company-badge[data-company="Deutsche Post"] {
@@ -827,9 +832,8 @@ a:hover {
 }
 
 .company-badge[data-company="DHL"] {
-    background: linear-gradient(to bottom, #ffcc33 0%, #D70B18 100%) !important;
+    background: linear-gradient(to bottom, #ffcc33 0%, #D70B18 100%);
     color: #fff !important;
-    border: none !important;
 }
 
 .company-badge[data-company="Hermes Europe"] {
