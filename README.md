@@ -6,6 +6,8 @@
 
 > **Eine offene, maschinenlesbare JSON-Datenbank für aktuelle deutsche Versandtarife.**
 
+**-> [Hier direkt ausprobieren!](https://c-hoffmann.github.io/shipping/) <-**
+
 Dieses Repository beinhaltet die Datenbasis für den **Punk Shipping Calculator**. Es stellt Preise, Maße und Gewichtsbeschränkungen der gängigsten deutschen Versanddienstleister in einem einheitlichen JSON-Format zur Verfügung. Ideal für E-Commerce-Projekte, Versandkostenrechner oder Vergleichsportale.
 
 ---
