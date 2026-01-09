@@ -1,4 +1,4 @@
-# 📦 Punk Shipping Calculator - Data
+# 📦 Punk Versandkostenrechner
 
 ![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
