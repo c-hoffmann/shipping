@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Punk Shipping Calculator - Vergleiche Versandkosten von Deutsche Post, DHL, Hermes, GLS und Arriva. Rebellisch einfach."
+        />
+        <meta
+            name="keywords"
+            content="Versandkosten, vergleichen, DHL, Deutsche Post, Hermes, Arriva, GLS, Versandkostenrechner"
+        />
+
+        <title>📦 PUNK SHIPPING - Versandkostenrechner</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- ═══════════════════════════════════════════════════════════════
+         HEADER - Der rebellische Kopf
+         ═══════════════════════════════════════════════════════════════ -->
+        <header class="punk-header">
+            <div class="header-content">
+                <!-- FIX: Emoji separat für korrekten Glitch-Effekt -->
+                <h1 class="main-title">
+                    <span class="emoji" aria-hidden="true">📦</span>
+                    <span class="glitch" data-text="PUNK SHIPPING"
+                        >PUNK SHIPPING</span
+                    >
+                </h1>
+                <p class="tagline">
+                    Versandkosten vergleichen.
+                    <span class="highlight">Ohne Bullshit.</span>
+                </p>
+            </div>
+
+            <!-- NEU: Theme Toggle -->
+            <button
+                id="theme-toggle"
+                class="theme-toggle"
+                aria-label="Farbschema wechseln"
+                title="Dark/Light Mode umschalten"
+            >
+                <span class="theme-icon theme-icon--dark">🌙</span>
+                <span class="theme-icon theme-icon--light">☀️</span>
+            </button>
+        </header>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+         MAIN - Hier passiert die Magie
+         ═══════════════════════════════════════════════════════════════ -->
+        <main class="container">
+            <!-- ─────────────────────────────────────────────────────────────
+             INPUT SECTION - Die Eingabefelder
+             ───────────────────────────────────────────────────────────── -->
+            <section class="input-section" aria-label="Paketdaten eingeben">
+                <div class="input-group">
+                    <div class="input-card dimensions">
+                        <h2>📐 Maße</h2>
+                        <div class="dimension-inputs">
+                            <div class="input-wrapper">
+                                <label for="side1">Länge</label>
+                                <div class="input-with-unit">
+                                    <input
+                                        type="number"
+                                        id="side1"
+                                        placeholder="0"
+                                        min="0"
+                                        step="0.1"
+                                        aria-label="Länge in Zentimeter"
+                                    />
+                                    <span class="unit">cm</span>
+                                </div>
+                            </div>
+                            <span class="separator" aria-hidden="true">×</span>
+                            <div class="input-wrapper">
+                                <label for="side2">Breite</label>
+                                <div class="input-with-unit">
+                                    <input
+                                        type="number"
+                                        id="side2"
+                                        placeholder="0"
+                                        min="0"
+                                        step="0.1"
+                                        aria-label="Breite in Zentimeter"
+                                    />
+                                    <span class="unit">cm</span>
+                                </div>
+                            </div>
+                            <span class="separator" aria-hidden="true">×</span>
+                            <div class="input-wrapper">
+                                <label for="side3">Höhe</label>
+                                <div class="input-with-unit">
+                                    <input
+                                        type="number"
+                                        id="side3"
+                                        placeholder="0"
+                                        min="0"
+                                        step="0.1"
+                                        aria-label="Höhe in Zentimeter"
+                                    />
+                                    <span class="unit">cm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-card weight">
+                        <h2>⚖️ Gewicht</h2>
+                        <div class="weight-input">
+                            <div class="input-wrapper">
+                                <label for="weight">Gewicht</label>
+                                <div class="input-with-unit">
+                                    <input
+                                        type="number"
+                                        id="weight"
+                                        placeholder="0"
+                                        min="0"
+                                        step="1"
+                                        aria-label="Gewicht"
+                                    />
+                                    <select
+                                        id="weight-unit"
+                                        aria-label="Gewichtseinheit"
+                                    >
+                                        <option value="1">g</option>
+                                        <option value="1000">kg</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-card actions">
+                        <button
+                            id="reset-btn"
+                            class="btn btn-reset"
+                            aria-label="Alle Eingaben zurücksetzen"
+                        >
+                            <span class="btn-icon">🔄</span>
+                            <span class="btn-text">Reset</span>
+                        </button>
+                        <!-- NEU: Share Button -->
+                        <button
+                            id="share-btn"
+                            class="btn btn-share"
+                            aria-label="Link teilen"
+                            title="Link mit aktuellen Eingaben kopieren"
+                        >
+                            <span class="btn-icon">🔗</span>
+                            <span class="btn-text">Teilen</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Stats -->
+                <div class="live-stats" aria-live="polite">
+                    <div class="stat">
+                        <span class="stat-label">Volumen:</span>
+                        <span class="stat-value" id="volume-display"
+                            >0 cm³</span
+                        >
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Gurtmaß:</span>
+                        <span class="stat-value" id="girth-display">0 cm</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Passende Angebote:</span>
+                        <span class="stat-value" id="count-display">-</span>
+                    </div>
+                    <!-- NEU: Günstigster Preis -->
+                    <div class="stat stat--highlight">
+                        <span class="stat-label">Günstigster Preis:</span>
+                        <span class="stat-value" id="cheapest-display">-</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─────────────────────────────────────────────────────────────
+             RESULTS TABLE - Die Ergebnisse
+             ───────────────────────────────────────────────────────────── -->
+            <section class="results-section" aria-label="Versandoptionen">
+                <div class="table-controls">
+                    <div class="filter-chips">
+                        <button class="chip active" data-filter="all">
+                            Alle
+                        </button>
+                        <button class="chip" data-filter="Deutsche Post">
+                            📮 Post
+                        </button>
+                        <button class="chip" data-filter="DHL">📦 DHL</button>
+                        <button class="chip" data-filter="Hermes Europe">
+                            🟠 Hermes
+                        </button>
+                        <button class="chip" data-filter="GLS">🟡 GLS</button>
+                        <button class="chip" data-filter="Arriva">
+                            🔵 Arriva
+                        </button>
+                    </div>
+
+                    <!-- NEU: Suchfeld -->
+                    <div class="search-wrapper">
+                        <input
+                            type="search"
+                            id="search-input"
+                            class="search-input"
+                            placeholder="🔍 Produkt suchen..."
+                            aria-label="Versandprodukte durchsuchen"
+                        />
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="results-table">
+                        <thead>
+                            <tr>
+                                <!-- NEU: Rang-Spalte -->
+                                <th class="rank-col">#</th>
+                                <th data-sort="company" class="sortable">
+                                    Firma <span class="sort-icon">⇅</span>
+                                </th>
+                                <th data-sort="title" class="sortable">
+                                    Produkt <span class="sort-icon">⇅</span>
+                                </th>
+                                <th
+                                    data-sort="price"
+                                    class="sortable sorted-asc"
+                                >
+                                    Preis <span class="sort-icon">↑</span>
+                                </th>
+                                <th>Link</th>
+                                <th data-sort="maxweight" class="sortable">
+                                    Max. Gewicht
+                                    <span class="sort-icon">⇅</span>
+                                </th>
+                                <th>Max. Maße</th>
+                                <th data-sort="insurance" class="sortable">
+                                    Versicherung
+                                    <span class="sort-icon">⇅</span>
+                                </th>
+                                <th>Bedingungen</th>
+                                <th>Optionen</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body">
+                            <!-- Wird dynamisch gefüllt -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NEU: Mobile Card-Container -->
+                <div id="results-cards" class="results-cards">
+                    <!-- Wird dynamisch gefüllt -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state hidden">
+                    <div class="empty-icon">📭</div>
+                    <h3>Keine passenden Versandoptionen</h3>
+                    <p>
+                        Dein Paket ist zu groß, zu schwer oder zu rebellisch für
+                        die Versanddienstleister.
+                    </p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loading-state" class="loading-state">
+                    <div class="loader"></div>
+                    <p>Lade Versandoptionen...</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+         FOOTER - Der Abspann
+         ═══════════════════════════════════════════════════════════════ -->
+        <footer class="punk-footer">
+            <div class="footer-content">
+                <p class="disclaimer">
+                    ⚠️ Keine Gewähr für Korrektheit der Angaben. Preise können
+                    sich ändern, wie das Leben halt so spielt.
+                </p>
+                <p class="credits">
+                    Made with 🖤 and too much ☕ | Daten von Deutsche Post, DHL,
+                    Hermes Europe, GLS & Arriva | Stand:
+                    <time datetime="2025-03-06">06.03.2025</time>
+                </p>
+                <p class="source">
+                    <a
+                        href="https://github.com/DEIN-USERNAME/punk-shipping"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        📂 Source Code auf GitHub
+                    </a>
+                </p>
+            </div>
+        </footer>
+
+        <!-- NEU: Toast-Benachrichtigung -->
+        <div id="toast" class="toast" role="alert" aria-live="assertive">
+            <span id="toast-message"></span>
+        </div>
+
+        <!-- Scripts am Ende für bessere Performance -->
+        <script src="js/app.js" type="module"></script>
+    </body>
+</html>
