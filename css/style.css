@@ -815,8 +815,8 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 30px;
+    width: 100px;
+    height: 50px;
     border-radius: var(--radius-sm);
     font-size: 0.75rem;
     font-weight: 700;
