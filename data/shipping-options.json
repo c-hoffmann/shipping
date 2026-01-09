@@ -102,7 +102,7 @@
     },
     {
       "internal_name": "deutschepost_warensendung_1000",
-      "title": "Warensendung 1000",
+      "title": "Warensendung",
       "company": "Deutsche Post",
       "price": "02.70",
       "minimalsizes": "10cm × 7cm × 0cm",
@@ -118,7 +118,7 @@
     },
     {
       "internal_name": "deutschepost_warensendung_2000",
-      "title": "Warensendung 1000 + Gewichtszuschlag",
+      "title": "Warensendung + Gewichtszuschlag",
       "company": "Deutsche Post",
       "price": "03.55",
       "minimalsizes": "10cm × 7cm × 0cm",
