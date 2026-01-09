@@ -381,7 +381,7 @@ a:hover {
 
 .input-group {
     display: grid;
-    grid-template-columns: 2fr 1fr auto;
+    grid-template-columns: 2fr 1fr 1fr auto;
     gap: var(--space-lg);
     align-items: start;
 }
@@ -503,6 +503,12 @@ a:hover {
 
 .input-with-unit select:focus {
     outline: none;
+}
+
+/* Insurance Card */
+.input-card.insurance .insurance-input {
+    display: flex;
+    align-items: flex-end;
 }
 
 /* Actions Card */
