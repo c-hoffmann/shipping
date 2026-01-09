@@ -827,11 +827,9 @@ a:hover {
 }
 
 .company-badge[data-company="DHL"] {
-    background: linear-gradient(90deg, #ffcc33 0%, #ffcc33 50%, #D70B18 51%, #D70B18 100%);
-    color: #fff;
-    border: none;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(to bottom, #ffcc33 0%, #D70B18 100%) !important;
+    color: #fff !important;
+    border: none !important;
 }
 
 .company-badge[data-company="Hermes Europe"] {
