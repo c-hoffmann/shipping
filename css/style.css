@@ -36,7 +36,7 @@
 
     /* Firmenfarben */
     --color-post: #FFCC33;  /* Deutsche Post Gelb */
-    --color-dhl: #d40511;   /* DHL Blau */
+    --color-dhl: #d40511;   /* DHL Gelb */
     --color-hermes: #0091CA; /* Hermes Blau */
     --color-gls: #021BAD;   /* GLS Blau */
     --color-arriva: #004D9C; /* Arriva Blau */
@@ -832,8 +832,10 @@ a:hover {
 }
 
 .company-badge[data-company="DHL"] {
-    background: linear-gradient(to bottom, #ffcc33 0%, #D70B18 100%);
-    color: #fff !important;
+    /* background: linear-gradient(to bottom, #ffcc33 0%, #D70B18 100%);
+    color: #fff !important; */
+    background: var(--color-dhl);
+    color: #D70B18;  
 }
 
 .company-badge[data-company="Hermes Europe"] {
