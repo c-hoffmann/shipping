@@ -49,6 +49,7 @@ const state = {
     side3: 0,
     weight: 0,
     weightUnit: 1,
+    minInsurance: 0,
   },
 };
 
@@ -62,6 +63,7 @@ const elements = {
   side3: document.getElementById("side3"),
   weight: document.getElementById("weight"),
   weightUnit: document.getElementById("weight-unit"),
+  minInsurance: document.getElementById("min-insurance"),
   searchInput: document.getElementById("search-input"),
 
   // Buttons
@@ -286,10 +288,11 @@ function loadFromUrl() {
     side3: parseNumber(params.get("h")),
     weight: parseNumber(params.get("g")),
     weightUnit: params.get("u") === "kg" ? 1000 : 1,
+    minInsurance: parseNumber(params.get("v")),
   };
 
   // Nur zurückgeben wenn mindestens ein Wert gesetzt
-  if (urlData.side1 || urlData.side2 || urlData.side3 || urlData.weight) {
+  if (urlData.side1 || urlData.side2 || urlData.side3 || urlData.weight || urlData.minInsurance) {
     return urlData;
   }
 
@@ -309,6 +312,9 @@ function createShareUrl() {
     // Gewicht in Gramm speichern
     params.set("g", state.userInput.weight);
     params.set("u", state.userInput.weightUnit === 1000 ? "kg" : "g");
+  }
+  if (state.userInput.minInsurance) {
+    params.set("v", state.userInput.minInsurance);
   }
 
   const url = new URL(window.location.href);
@@ -482,6 +488,16 @@ function checkSpecialConditions(option, userSides) {
 }
 
 /**
+ * Prüft Versicherungsanforderungen
+ */
+function checkInsuranceRequirements(option, minInsurance) {
+  if (minInsurance === 0) return true;
+
+  const insurance = parseFloat((option.insurance || "0").replace(",", ".")) || 0;
+  return insurance >= minInsurance;
+}
+
+/**
  * Prüft Suchquery
  */
 function checkSearchQuery(option, query) {
@@ -512,6 +528,7 @@ function filterOptions() {
   );
 
   const userWeight = state.userInput.weight;
+  const userMinInsurance = state.userInput.minInsurance;
   const girth = calculateGirth(userSides);
 
   return state.allOptions.filter((option) => {
@@ -545,6 +562,11 @@ function filterOptions() {
 
     // Spezielle Bedingungen
     if (!checkSpecialConditions(option, userSides)) {
+      return false;
+    }
+
+    // Versicherungscheck
+    if (!checkInsuranceRequirements(option, userMinInsurance)) {
       return false;
     }
 
@@ -866,6 +888,9 @@ function updateInputFields() {
   }
 
   elements.weightUnit.value = state.userInput.weightUnit;
+
+  // Mindestversicherung
+  elements.minInsurance.value = state.userInput.minInsurance || "";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -884,6 +909,8 @@ const handleInputChange = debounce(() => {
   const weightMultiplier = parseInt(elements.weightUnit.value, 10);
   state.userInput.weight = weightValue * weightMultiplier;
   state.userInput.weightUnit = weightMultiplier;
+
+  state.userInput.minInsurance = parseNumber(elements.minInsurance.value);
 
   state.filteredOptions = filterOptions();
   renderTable();
@@ -910,10 +937,11 @@ function handleReset() {
   elements.side3.value = "";
   elements.weight.value = "";
   elements.weightUnit.value = "1";
+  elements.minInsurance.value = "";
   elements.searchInput.value = "";
 
   // State zurücksetzen
-  state.userInput = { side1: 0, side2: 0, side3: 0, weight: 0, weightUnit: 1 };
+  state.userInput = { side1: 0, side2: 0, side3: 0, weight: 0, weightUnit: 1, minInsurance: 0 };
   state.companyFilter = "all";
   state.searchQuery = "";
 
@@ -1015,6 +1043,7 @@ function initEventListeners() {
     elements.side3,
     elements.weight,
     elements.weightUnit,
+    elements.minInsurance,
   ];
   inputFields.forEach((field) => {
     field.addEventListener("input", handleInputChange);
