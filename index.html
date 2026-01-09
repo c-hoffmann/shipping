@@ -115,7 +115,7 @@
                         </div>
                     </div>
 
-                    <div class="input-card weight">
+                                        <div class="input-card weight">
                         <h2>⚖️ Gewicht</h2>
                         <div class="weight-input">
                             <div class="input-wrapper">
@@ -136,6 +136,26 @@
                                         <option value="1">g</option>
                                         <option value="1000">kg</option>
                                     </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-card insurance">
+                        <h2>🛡️ Versicherung</h2>
+                        <div class="insurance-input">
+                            <div class="input-wrapper">
+                                <label for="min-insurance">Mindestens</label>
+                                <div class="input-with-unit">
+                                    <input
+                                        type="number"
+                                        id="min-insurance"
+                                        placeholder="0"
+                                        min="0"
+                                        step="50"
+                                        aria-label="Mindestversicherung in Euro"
+                                    />
+                                    <span class="unit">€</span>
                                 </div>
                             </div>
                         </div>
