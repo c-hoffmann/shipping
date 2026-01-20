@@ -25,9 +25,9 @@ Dieses Repository beinhaltet die Datenbasis für den **Punk Shipping Calculator*
 | :---: | :--- | :--- |
 | 🟡 | **Deutsche Post** | Standard-, Kompakt-, Groß-, Maxibriefe, Warensendungen |
 | 🔴 | **DHL** | Päckchen (S/M), Pakete (bis 31,5kg), Sperrgut |
-| 🔵 | **Hermes** | Päckchen, Pakete (S-XXL) |
-| 🔵 | **GLS** | Pack (XS-XL) |
-| 🟢 | **Arriva** | Briefversand (Regional/Südwest) |
+| 🟢 | **Hermes** | Päckchen, Pakete (S-XXL) |
+| 🟣 | **GLS** | Pack (XS-XL) |
+| 🔵 | **Arriva** | Briefversand (Regional/Südwest) |
 
 ---
 
