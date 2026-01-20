@@ -830,7 +830,7 @@ a:hover {
     letter-spacing: 0.05em;
     text-align: center;
     padding: 0;
-    padding-bottom: 3px;
+    padding-bottom: 10px;
 }
 
 .company-badge[data-company="Deutsche Post"] {
