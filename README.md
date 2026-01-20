@@ -1,8 +1,8 @@
 # 📦 Punk Versandkostenrechner
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.1-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
-![Last Update](https://img.shields.io/badge/last%20update-März%202025-orange)
+![Last Update](https://img.shields.io/badge/last%20update-Januar%202026-orange)
 
 > **Eine offene, maschinenlesbare JSON-Datenbank für aktuelle deutsche Versandtarife.**
 
